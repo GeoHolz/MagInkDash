@@ -76,7 +76,7 @@ def set_event_format(event):
             return(jour + " de " + tmpstart.strftime('%H:%M') + " à " + tmpend.strftime('%H:%M') + " : " + event['summary'])
         else:
             if(start==end) :
-                jour=date_is_today(tmpend.strftime('%d-%m'),now_day,tomorrow_day)
+                jour=date_is_today(end,now_day,tomorrow_day)
                 return(jour + " : " + event['summary'])
             else:
                 return("Du " + start + " au " + end + " : " + event['summary'])

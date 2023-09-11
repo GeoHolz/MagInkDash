@@ -1,7 +1,12 @@
 # Original project
 Forked from https://github.com/speedyg0nz/MagInkDash
 
-# MagInkDash
+# Change
+- Bitweather replaces OpenWeatherMap, requiring no CB registration
+- ChatGPT removed and replaced by Google Contact birthdays
+- Added a second calendar
+
+# MagInkDash-v2
 This repo contains the code needed to drive an E-Ink Magic Dashboard that uses a Raspberry Pi to automatically retrieve updated content from Google Calendar and BitWeather, format them into the desired layout, before serving it to a battery powered E-Ink display (Inkplate 10). Note that the code has only been tested on the specific hardware mentioned, but can be easily modified to work with other hardware (for both the server or display).
 
 ![Example](render/dashboard.png)
