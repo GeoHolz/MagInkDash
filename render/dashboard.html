@@ -18,13 +18,13 @@
                             <div class="row">
                                 <div class="col-md-6 date-padding">
                                     <div class="text-right">
-                                        <p class="big-day">{day}</p>
+                                        <p class="big-day">11</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6 date-padding">
                                     <div class="col-md-12"  style="height: 130px"></div>
                                     <div>
-                                        <p style="font-size: 2.5rem">{weekday}<br />{month}</p>
+                                        <p style="font-size: 2.5rem">lundi<br />septembre</p>
                                     </div>
                                 </div>
                             </div>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="row align-items-start ">
                         <div class="col-md-12 text-center">
-                            <i class="wi wi-owm-{current_weather_id}" style="font-size: 25rem"></i>
+                            <i class="wi wi-owm-802" style="font-size: 25rem"></i>
                         </div>
                     </div>
                     <div class="row align-items-start ">
@@ -40,7 +40,7 @@
                     </div>
                     <div class="row align-items-start ">
                         <div class="col-md-12 text-center">
-                            <h2>{current_weather_text} | {current_pop}mm/hr | {current_weather_temp}°</h2>
+                            <h2>Nuages Épars | 0mm/hr | 20°</h2>
                         </div>
                     </div>
                     <div class="row align-items-start ">
@@ -50,36 +50,36 @@
                         <div class="col-md-4">
                             <div class="row align-items-start ">
                                 <div class="col-md-12 text-center">
-                                    <i class="wi wi-owm-{today_weather_id}" style="font-size: 10rem; color:gray"></i>
+                                    <i class="wi wi-owm-803" style="font-size: 10rem; color:gray"></i>
                                 </div>
                             </div>
                             <div class="row align-items-start ">
                                 <div class="col-md-12 text-center">
-                                    <h3>{tomorrow}<br />{today_weather_pop}% | {today_weather_min}-{today_weather_max}°</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="row align-items-start ">
-                                <div class="col-md-12 text-center">
-                                    <i class="wi wi-owm-{tomorrow_weather_id}" style="font-size: 10rem; color:gray"></i>
-                                </div>
-                            </div>
-                            <div class="row align-items-start ">
-                                <div class="col-md-12 text-center">
-                                    <h3>{dayafter}<br />{tomorrow_weather_pop}% | {tomorrow_weather_min}-{tomorrow_weather_max}°</h3>
+                                    <h3>mardi<br />10% | 16-24°</h3>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="row align-items-start ">
                                 <div class="col-md-12 text-center">
-                                    <i class="wi wi-owm-{dayafter_weather_id}" style="font-size: 10rem; color:gray"></i>
+                                    <i class="wi wi-owm-802" style="font-size: 10rem; color:gray"></i>
                                 </div>
                             </div>
                             <div class="row align-items-start ">
                                 <div class="col-md-12 text-center">
-                                    <h3>{dayafterafter}<br />{dayafter_weather_pop}% | {dayafter_weather_min}-{dayafter_weather_max}°</h3>
+                                    <h3>mercredi<br />20% | 16-21°</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row align-items-start ">
+                                <div class="col-md-12 text-center">
+                                    <i class="wi wi-owm-801" style="font-size: 10rem; color:gray"></i>
+                                </div>
+                            </div>
+                            <div class="row align-items-start ">
+                                <div class="col-md-12 text-center">
+                                    <h3>jeudi<br />0% | 15-22°</h3>
                                 </div>
                             </div>
                         </div>
@@ -94,12 +94,18 @@
                         <div class="col-md-12">
                             <h2>Agenda</h2>
                             <ol class="list-unstyled">
-                                {events_0}
-                                {events_1}
-                                {events_2}
-                                {events_3}
-                                {events_4}
-                                {events_5}
+                                <div class="event"><span class="event-time">Aujourd'hui de 15:00 à 16:00 : tesssst</span> </div>
+
+                                <div class="event"><span class="event-time">Demain de 18:00 à 19:00 : Réunion école Cammie</span> </div>
+
+                                <div class="event"><span class="event-time">Le 14-09 de 18:00 à 19:00 : Réunion école Louis</span> </div>
+
+                                <div class="event"><span class="event-time">Le 19-09 de 09:30 à 12:00 : Ramoneur</span> </div>
+
+                                <div class="event"><span class="event-time">Du 21-09 au 22-09 : Lolo Paris</span> </div>
+
+                                <div class="event"><span class="event-time">Du 26-09 au 27-09 : Lolo à Strasbourg</span> </div>
+
                             </ol>
                         </div>
                     </div>
@@ -108,19 +114,29 @@
                         <div class="col-md-12">
                             <h2>Anniversaire</h2>
                             <ol class="list-unstyled">
-                                {birthday_0}
-                                {birthday_1}
-                                {birthday_2}
-                                {birthday_3}
-                                {birthday_4}
+                                <div class="event"><span class="event-time">Aujourd'hui : Delphine Nore</span> </div>
+
+                                <div class="event"><span class="event-time">Le 15-09 : Orel Bieber</span> </div>
+
+                                <div class="event"><span class="event-time">Le 19-09 : David Rodak</span> </div>
+
+                                <div class="event"><span class="event-time">Le 20-09 : Pierre Koch</span> </div>
+
+                                <div class="event"><span class="event-time">Le 24-09 : Jeremie Maghales</span> </div>
+
                             </ol>
                             <h2>Tâches</h2>
                             <ol class="list-unstyled">
-                                {task_0}
-                                {task_1}
-                                {task_2}
-                                {task_3}
-                                {task_4}
+                                <div class="event"><span class="event-time">Demain : Sport Cammie</span> </div>
+
+                                <div class="event"><span class="event-time">Le 13-09 : Poubelle</span> </div>
+
+                                <div class="event"><span class="event-time">Le 14-09 : Poubelle recyclée</span> </div>
+
+                                <div class="event"><span class="event-time">Le 13-09 de 17:00 à 18:30 : Foot Louis</span> </div>
+
+                                <div class="event"><span class="event-time">Le 14-09 de 18:15 à 19:00 : Chorale Cammie</span> </div>
+
 
                             </ol>
                         </div>

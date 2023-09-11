@@ -9,6 +9,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
+_DELETE/
 develop-eggs/
 dist/
 downloads/
@@ -127,3 +128,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+# PJ
+token.pickle
+test.py
+logfile.log
+credentials.json
+.vscode/
+

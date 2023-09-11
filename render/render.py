@@ -16,6 +16,8 @@ import string
 from PIL import Image
 import logging
 from selenium.webdriver.common.by import By
+import locale
+locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')
 
 
 class RenderHelper:
@@ -76,29 +78,41 @@ class RenderHelper:
             else:
                 datetime_str = '{}{}am'.format(str(datetimeObj.hour), datetime_str)
         return datetime_str
-
-    def process_inputs(self, current_date, current_weather, hourly_forecast, daily_forecast, event_list, num_cal_days, topic, path_to_server_image):
-
+      
+    def process_inputs(self, current_date, daily_forecast, event_list, path_to_server_image,birthday_list,task_list,now_weather):
         # Read html template
         with open(self.currPath + '/dashboard_template.html', 'r') as file:
             dashboard_template = file.read()
-
         # Populate the date and events
         cal_events_list = []
-        for i in range(num_cal_days):
-            if len(event_list[i]) > 0:
-                cal_events_text = ""
-            else:
-                cal_events_text = '<div class="event"><span class="event-time">None</span></div>'
-            for event in event_list[i]:
+        cal_events_list=["","","","","","","","","",""]
+            
+        for x in range(0,9):
+            cal_events_text = ""
+            if(x<len(event_list)):
                 cal_events_text += '<div class="event">'
-                if event["isMultiday"] or event["allday"]:
-                    cal_events_text += event['summary']
-                else:
-                    cal_events_text += '<span class="event-time">' + self.get_short_time(event['startDatetime']) + '</span> ' + event['summary']
-                cal_events_text += '</div>\n'
-            cal_events_list.append(cal_events_text)
-
+                cal_events_text += '<span class="event-time">' + event_list[x] + '</span> '
+                cal_events_text += '</div>\n'           
+            cal_events_list[x]=cal_events_text  
+            
+        birthday_events_list = []
+        birthday_events_list=["","","","",""]           
+        for y in range(0,5):
+            birthday_events_text = ""
+            if(y<len(birthday_list)):
+                birthday_events_text += '<div class="event">'
+                birthday_events_text += '<span class="event-time">' + birthday_list[y] + '</span> '
+                birthday_events_text += '</div>\n'           
+            birthday_events_list[y]=birthday_events_text  
+        task_events_list = []
+        task_events_list=["","","","","",""] 
+        for z in range(0,5):
+            task_events_text = ""
+            if(z<len(task_list)):
+                task_events_text += '<div class="event">'
+                task_events_text += '<span class="event-time">' + task_list[z] + '</span> '
+                task_events_text += '</div>\n'           
+            task_events_list[z]=task_events_text  
         # Append the bottom and write the file
         htmlFile = open(self.currPath + '/dashboard.html', "w")
         htmlFile.write(dashboard_template.format(
@@ -107,31 +121,51 @@ class RenderHelper:
             weekday=current_date.strftime("%A"),
             tomorrow=(current_date + timedelta(days=1)).strftime("%A"),
             dayafter=(current_date + timedelta(days=2)).strftime("%A"),
-            events_today=cal_events_list[0],
-            events_tomorrow=cal_events_list[1],
-            events_dayafter=cal_events_list[2],
-            # I'm choosing to show the forecast for the next hour instead of the current weather
-            # current_weather_text=string.capwords(current_weather["weather"][0]["description"]),
-            # current_weather_id=current_weather["weather"][0]["id"],
-            # current_weather_temp=round(current_weather["temp"]),
-            current_weather_text=string.capwords(hourly_forecast[1]["weather"][0]["description"]),
-            current_weather_id=hourly_forecast[1]["weather"][0]["id"],
-            current_weather_temp=round(hourly_forecast[1]["temp"]),
-            today_weather_id=daily_forecast[0]["weather"][0]["id"],
-            tomorrow_weather_id=daily_forecast[1]["weather"][0]["id"],
-            dayafter_weather_id=daily_forecast[2]["weather"][0]["id"],
-            today_weather_pop=str(round(daily_forecast[0]["pop"] * 100)),
-            tomorrow_weather_pop=str(round(daily_forecast[1]["pop"] * 100)),
-            dayafter_weather_pop=str(round(daily_forecast[2]["pop"] * 100)),
-            today_weather_min=str(round(daily_forecast[0]["temp"]["min"])),
-            tomorrow_weather_min=str(round(daily_forecast[1]["temp"]["min"])),
-            dayafter_weather_min=str(round(daily_forecast[2]["temp"]["min"])),
-            today_weather_max=str(round(daily_forecast[0]["temp"]["max"])),
-            tomorrow_weather_max=str(round(daily_forecast[1]["temp"]["max"])),
-            dayafter_weather_max=str(round(daily_forecast[2]["temp"]["max"])),
-            topic_title=topic["title"],
-            topic_text=topic["text"]
+            dayafterafter=(current_date + timedelta(days=3)).strftime("%A"),
+            events_0=cal_events_list[0],
+            events_1=cal_events_list[1],
+            events_2=cal_events_list[2],
+            events_3=cal_events_list[3],
+            events_4=cal_events_list[4],
+            events_5=cal_events_list[5],
+            events_6=cal_events_list[6],
+            events_7=cal_events_list[7],
+            events_8=cal_events_list[8],
+            events_9=cal_events_list[9],
+            birthday_0=birthday_events_list[0],
+            birthday_1=birthday_events_list[1],
+            birthday_2=birthday_events_list[2],
+            birthday_3=birthday_events_list[3],
+            birthday_4=birthday_events_list[4],
+            task_0=task_events_list[0],
+            task_1=task_events_list[1],
+            task_2=task_events_list[2],
+            task_3=task_events_list[3],
+            task_4=task_events_list[4],
+            task_5=task_events_list[5],
+            current_weather_text=string.capwords(now_weather[0]["weather"]["description"]),
+            current_pop=str(round(now_weather[0]["precip"])),
+            current_weather_id=now_weather[0]["weather"]["code"],
+            current_weather_temp=round(now_weather[0]["temp"]),
+            today_weather_id=daily_forecast[1]["weather"]["code"],
+            tomorrow_weather_id=daily_forecast[2]["weather"]["code"],
+            dayafter_weather_id=daily_forecast[3]["weather"]["code"],
+            today_weather_pop=str(round(daily_forecast[1]["pop"])),
+            tomorrow_weather_pop=str(round(daily_forecast[2]["pop"])),
+            dayafter_weather_pop=str(round(daily_forecast[3]["pop"])),
+            today_weather_min=str(round(daily_forecast[1]["min_temp"])),
+            tomorrow_weather_min=str(round(daily_forecast[2]["min_temp"])),
+            dayafter_weather_min=str(round(daily_forecast[3]["min_temp"])),
+            today_weather_max=str(round(daily_forecast[1]["max_temp"])),
+            tomorrow_weather_max=str(round(daily_forecast[2]["max_temp"])),
+            dayafter_weather_max=str(round(daily_forecast[3]["max_temp"]))
+            #topic_title=topic["title"],
+            #topic_text=topic["text"]
+
+
+  
         ))
         htmlFile.close()
+        self.logger.info('dashboard.html mis à jour')
 
         self.get_screenshot(path_to_server_image)
