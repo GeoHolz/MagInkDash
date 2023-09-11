@@ -4,6 +4,7 @@ Forked from https://github.com/speedyg0nz/MagInkDash
 # MagInkDash
 This repo contains the code needed to drive an E-Ink Magic Dashboard that uses a Raspberry Pi to automatically retrieve updated content from Google Calendar and BitWeather, format them into the desired layout, before serving it to a battery powered E-Ink display (Inkplate 10). Note that the code has only been tested on the specific hardware mentioned, but can be easily modified to work with other hardware (for both the server or display).
 
+![Example](render/dashboard.png)
 ## Hardware Required
 - A server ( raspberry?) to retrieve content and generate a dashboard for the E-Ink display so any model would do. Personally, I dug out an old Raspberry Pi Model B Revision 2.0 from 2011 and it works fine for this purpose. In fact, it doesn't even need to be a RPi. Any other Single Board Computer, or old computer, or even a cloud service that runs the code would suffice.
 - [Inkplate 10 Battery Powered E-Ink Display](https://soldered.com/product/soldered-inkplate-10-9-7-e-paper-board-with-enclosure-copy/) - Used as a client to display the generated dashboard. I went with this because it was an all-in-one with the enclosure and battery included so there's less hardware tinkering. But you could certainly go barebones and assemble the different parts yourself from scratch, i.e. display, microcontroller, case, and battery.
